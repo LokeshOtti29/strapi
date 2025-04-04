@@ -365,7 +365,8 @@ export interface AdminUser extends Schema.CollectionType {
 export interface ApiPostPost extends Schema.CollectionType {
   collectionName: 'posts';
   info: {
-    displayName: 'Post';
+    description: '';
+    displayName: 'Project';
     pluralName: 'posts';
     singularName: 'post';
   };
@@ -376,8 +377,11 @@ export interface ApiPostPost extends Schema.CollectionType {
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
       Attribute.Private;
+    EndDate: Attribute.Date;
+    Projectname: Attribute.String;
     publishedAt: Attribute.DateTime;
-    Text: Attribute.String;
+    StartDate: Attribute.Date;
+    Status: Attribute.Enumeration<['Completed', 'Remaining']>;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
       Attribute.Private;
@@ -387,7 +391,8 @@ export interface ApiPostPost extends Schema.CollectionType {
 export interface ApiTypeType extends Schema.CollectionType {
   collectionName: 'types';
   info: {
-    displayName: 'Type';
+    description: '';
+    displayName: 'Client';
     pluralName: 'types';
     singularName: 'type';
   };
@@ -395,9 +400,11 @@ export interface ApiTypeType extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
+    clientname: Attribute.String;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::type.type', 'oneToOne', 'admin::user'> &
       Attribute.Private;
+    Industry: Attribute.String;
     publishedAt: Attribute.DateTime;
     Type: Attribute.Enumeration<['Fixed', 'Recurring']>;
     updatedAt: Attribute.DateTime;

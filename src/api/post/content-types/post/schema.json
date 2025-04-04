@@ -4,15 +4,29 @@
   "info": {
     "singularName": "post",
     "pluralName": "posts",
-    "displayName": "Post"
+    "displayName": "Project",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "Text": {
+    "Projectname": {
       "type": "string"
+    },
+    "Status": {
+      "type": "enumeration",
+      "enum": [
+        "Completed",
+        "Remaining"
+      ]
+    },
+    "StartDate": {
+      "type": "date"
+    },
+    "EndDate": {
+      "type": "date"
     }
   }
 }
