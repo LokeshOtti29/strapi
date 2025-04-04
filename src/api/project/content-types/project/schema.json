@@ -26,6 +26,12 @@
     },
     "EndDate": {
       "type": "date"
+    },
+    "p": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::client.client",
+      "inversedBy": "projects"
     }
   }
 }

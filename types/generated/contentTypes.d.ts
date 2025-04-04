@@ -365,6 +365,7 @@ export interface AdminUser extends Schema.CollectionType {
 export interface ApiClientClient extends Schema.CollectionType {
   collectionName: 'clients';
   info: {
+    description: '';
     displayName: 'Client';
     pluralName: 'clients';
     singularName: 'client';
@@ -382,6 +383,11 @@ export interface ApiClientClient extends Schema.CollectionType {
     > &
       Attribute.Private;
     Industry: Attribute.String;
+    projects: Attribute.Relation<
+      'api::client.client',
+      'oneToMany',
+      'api::project.project'
+    >;
     publishedAt: Attribute.DateTime;
     Type: Attribute.Enumeration<['Fixed', 'Recurring']>;
     updatedAt: Attribute.DateTime;
@@ -413,6 +419,11 @@ export interface ApiProjectProject extends Schema.CollectionType {
     > &
       Attribute.Private;
     EndDate: Attribute.Date;
+    p: Attribute.Relation<
+      'api::project.project',
+      'manyToOne',
+      'api::client.client'
+    >;
     Projectname: Attribute.String;
     publishedAt: Attribute.DateTime;
     StartDate: Attribute.Date;
