@@ -362,39 +362,12 @@ export interface AdminUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiPostPost extends Schema.CollectionType {
-  collectionName: 'posts';
+export interface ApiClientClient extends Schema.CollectionType {
+  collectionName: 'clients';
   info: {
-    description: '';
-    displayName: 'Project';
-    pluralName: 'posts';
-    singularName: 'post';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    EndDate: Attribute.Date;
-    Projectname: Attribute.String;
-    publishedAt: Attribute.DateTime;
-    StartDate: Attribute.Date;
-    Status: Attribute.Enumeration<['Completed', 'Remaining']>;
-    updatedAt: Attribute.DateTime;
-    updatedBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTypeType extends Schema.CollectionType {
-  collectionName: 'types';
-  info: {
-    description: '';
     displayName: 'Client';
-    pluralName: 'types';
-    singularName: 'type';
+    pluralName: 'clients';
+    singularName: 'client';
   };
   options: {
     draftAndPublish: true;
@@ -402,13 +375,54 @@ export interface ApiTypeType extends Schema.CollectionType {
   attributes: {
     clientname: Attribute.String;
     createdAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::type.type', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<
+      'api::client.client',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
     Industry: Attribute.String;
     publishedAt: Attribute.DateTime;
     Type: Attribute.Enumeration<['Fixed', 'Recurring']>;
     updatedAt: Attribute.DateTime;
-    updatedBy: Attribute.Relation<'api::type.type', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<
+      'api::client.client',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProjectProject extends Schema.CollectionType {
+  collectionName: 'projects';
+  info: {
+    displayName: 'Project';
+    pluralName: 'projects';
+    singularName: 'project';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    EndDate: Attribute.Date;
+    Projectname: Attribute.String;
+    publishedAt: Attribute.DateTime;
+    StartDate: Attribute.Date;
+    Status: Attribute.Enumeration<['Completed', 'Remaining']>;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -849,8 +863,8 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::post.post': ApiPostPost;
-      'api::type.type': ApiTypeType;
+      'api::client.client': ApiClientClient;
+      'api::project.project': ApiProjectProject;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

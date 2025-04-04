@@ -1,26 +1,25 @@
 {
   "kind": "collectionType",
-  "collectionName": "types",
+  "collectionName": "clients",
   "info": {
-    "singularName": "type",
-    "pluralName": "types",
-    "displayName": "Client",
-    "description": ""
+    "singularName": "client",
+    "pluralName": "clients",
+    "displayName": "Client"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
+    "clientname": {
+      "type": "string"
+    },
     "Type": {
       "type": "enumeration",
       "enum": [
         "Fixed",
         "Recurring"
       ]
-    },
-    "clientname": {
-      "type": "string"
     },
     "Industry": {
       "type": "string"
